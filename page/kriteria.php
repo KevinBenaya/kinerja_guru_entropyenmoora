@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($validasi) {
 		$q = $connection->query("SELECT id_kriteria FROM kriteria WHERE id_penilaian=$_POST[id_penilaian] AND nama_kriteria LIKE '%$_POST[nama_kriteria]%'");
 		if ($q->num_rows) {
-			echo alert("Kriteri sudah ada!", "?page=kriteria");
+			echo alert("Kriteria sudah ada!", "?page=kriteria");
 			$err = true;
 		}
 	}
@@ -45,7 +45,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 										<select class="form-control" name="id_penilaian">
 											<option>---</option>
 											<?php $query = $connection->query("SELECT * FROM kategori_penilaian"); while ($data = $query->fetch_assoc()): ?>
-												<option value="<?=$data["id_penilaian"]?>" <?= (!$update) ?: (($row["id_penilaian"] != $data["id_penilaian"]) ?: 'selected="on"') ?>><?=$data["nama_kriteria"]?></option>
+												<option value="<?=$data["id_penilaian"]?>" <?= (!$update) ?: (($row["id_penilaian"] != $data["id_penilaian"]) ?: 'selected="on"') ?>><?=$data["jenis_penilaian"]?></option>
 											<?php endwhile; ?>
 										</select>
 									</div>
@@ -85,7 +85,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                </thead>
 	                <tbody>
 	                    <?php $no = 1; ?>
-	                    <?php if ($query = $connection->query("SELECT a.nama_kriteria AS kriteria, b.nama AS Jenis Penilaian, a.id_kriteria, a.sifat_kriteria FROM kriteria a JOIN kategori_penilaian b USING(id_beasiswa)")): ?>
+	                    <?php if ($query = $connection->query("SELECT a.nama_kriteria AS kriteria, b.nama AS jenis_penilaian, a.id_kriteria, a.sifat_kriteria FROM kriteria a JOIN kategori_penilaian b USING(id_penilaian)")): ?>
 	                        <?php while($row = $query->fetch_assoc()): ?>
 	                        <tr>
 	                            <td><?=$no++?></td>

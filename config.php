@@ -3,7 +3,7 @@
 /**
  * Database connection setup
  */
-if (!$connection = new Mysqli("localhost", "root", "", "dss_entropy_moora_db")) {
+if (!$connection = new Mysqli("localhost", "root", "", "dss_entropy_moora_db_2")) {
 // if (!$connection = new Mysqli("mysql.idhostinger.com", "u361711216_bea", "u361711216_bea", "u361711216_bea")) {
   echo "<h3>ERROR: Koneksi database gagal!</h3>";
 }

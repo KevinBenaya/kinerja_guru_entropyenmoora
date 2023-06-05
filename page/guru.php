@@ -41,7 +41,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	        <div class="panel-body">
 	            <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
 	                <div class="form-group">
-	                    <label for="nuptk">nuptk</label>
+	                    <label for="nuptk">NUPTK</label>
 	                    <input type="text" name="nuptk" class="form-control" <?= (!$update) ?: 'value="'.$row["nuptk"].'"' ?>>
 	                </div>
 	                <div class="form-group">
@@ -66,7 +66,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	</div>
 	<div class="col-md-8">
 	    <div class="panel panel-info">
-	        <div class="panel-heading"><h3 class="text-center">DAFTAR Guru</h3></div>
+	        <div class="panel-heading"><h3 class="text-center">DAFTAR GURU</h3></div>
 	        <div class="panel-body">
 	            <table class="table table-condensed">
 	                <thead>
@@ -74,7 +74,6 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                        <th>No</th>
 	                        <th>NUPTK</th>
 	                        <th>Nama</th>
-
 	                        <th>Jenis Kelamin</th>
 	                        <th></th>
 	                    </tr>

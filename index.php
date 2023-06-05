@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once "config.php";
+if (empty($_SESSION)) {
+  header('location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +46,7 @@
                             <li><a href="?page=guru">Data Guru</a></li>
                             <li><a href="?page=kriteria">Kriteria</a></li>
                             <li><a href="?page=model">Model</a></li>
-                            <li><a href="?page=penilaian">Penilaian</a></li>
+                            <li><a href="?page=penilaian_guru">Penilaian</a></li>
                             <li class="divider"></li>
                             <li><a href="?page=nilai">Persyaratan</a></li>
                           </ul>

@@ -93,7 +93,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                </thead>
 	                <tbody>
 	                    <?php $no = 1; ?>
-	                    <?php if ($query = $connection->query("SELECT a.id_penilaian_guru, c.jenis_penilaian AS jenis_penilaianS, b.nama_kriteria AS nama_kriteria, a.keterangan, a.bobot FROM penilaian_guru a JOIN kriteria b ON a.id_kriteria=b.id_kriteria JOIN kategori_penilaian c ON a.id_penilaian=c.id_penilaian")): ?>
+	                    <?php if ($query = $connection->query("SELECT a.id_penilaian_guru, c.jenis_penilaian AS jenis_penilaian, b.nama_kriteria AS nama_kriteria, a.keterangan, a.bobot FROM penilaian_guru a JOIN kriteria b ON a.id_kriteria=b.id_kriteria JOIN kategori_penilaian c ON a.id_penilaian=c.id_penilaian")): ?>
 	                        <?php while($row = $query->fetch_assoc()): ?>
 	                        <tr>
 	                            <td><?=$no++?></td>
@@ -118,5 +118,5 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 </div>
 
 <script type="text/javascript">
-$("#kriteria").chained("#beasiswa");
+$("#kriteria").chained("#kategori_penilaian");
 </script>

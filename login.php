@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once "config.php";
-    $sql = "SELECT * FROM pengguna WHERE username='$_POST[username]' AND password='" . md5($_POST['password']) . "'";
+    $sql = "SELECT * FROM pengguna WHERE username='$_POST[username]' AND password='" . ($_POST['password']) . "'";
     if ($query = $connection->query($sql)) {
         if ($query->num_rows) {
             session_start();
