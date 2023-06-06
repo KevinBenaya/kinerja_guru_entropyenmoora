@@ -24,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (!$err AND $connection->query($sql)) {
     echo alert("Berhasil!", "?page=guru");
-  } else {
-		echo alert("Gagal!", "?page=guru");
+  }
+   else {
+		echo alert($err);
   }
 }
 

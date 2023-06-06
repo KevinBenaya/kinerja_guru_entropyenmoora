@@ -92,7 +92,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                        <?php while($row = $query->fetch_assoc()): ?>
 	                        <tr>
 	                            <td><?=$no++?></td>
-															<td><?=$row['nama_penilaian']?></td>
+								<td><?=$row['nama_penilaian']?></td>
 	                            <td><?=$row['nama_kriteria']?></td>
 	                            <td><?=$row['bobot']?></td>
 	                            <td>

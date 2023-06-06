@@ -85,7 +85,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                </thead>
 	                <tbody>
 	                    <?php $no = 1; ?>
-	                    <?php if ($query = $connection->query("SELECT a.nama_kriteria AS kriteria, b.nama AS jenis_penilaian, a.id_kriteria, a.sifat_kriteria FROM kriteria a JOIN kategori_penilaian b USING(id_penilaian)")): ?>
+	                    <?php if ($query = $connection->query("SELECT a.nama_kriteria AS kriteria, b.jenis_penilaian AS jenis_penilaian, a.id_kriteria, a.sifat_kriteria FROM kriteria a JOIN kategori_penilaian b USING(id_penilaian)")): ?>
 	                        <?php while($row = $query->fetch_assoc()): ?>
 	                        <tr>
 	                            <td><?=$no++?></td>
