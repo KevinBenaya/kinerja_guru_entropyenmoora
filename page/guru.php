@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($update) {
 		$sql = "UPDATE guru SET nuptk='$_POST[nuptk]', nama_guru='$_POST[nama_guru]',  jenis_kelamin='$_POST[jenis_kelamin]' WHERE nuptk='$_GET[key]'";
 	} else {
-		$sql = "INSERT INTO guru VALUES ('$_POST[nuptk]', '$_POST[nama_guru]', '$_POST[jenis_kelamin]'";
+		$sql = "INSERT INTO guru VALUES ('$_POST[nuptk]', '$_POST[nama_guru]', '$_POST[jenis_kelamin]')";
 		$validasi = true;
 	}
 

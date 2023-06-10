@@ -52,8 +52,8 @@
 	          <table class="table table-condensed table-hover">
 	              <thead>
 	                  <tr>
-							<th>NIM</th>
-							<th>Nama</th>
+							<th>NUPTK</th>
+							<th>Nama Guru</th>
 							<?php //$query = $connection->query("SELECT nama FROM kriteria WHERE id_penilaian=$_GET[kategori_penilaian]"); while($row = $query->fetch_assoc()): ?>
 								<!-- <th><?//=$row["nama"]?></th> -->
 							<?php //endwhile ?>
@@ -64,9 +64,9 @@
 					<?php $query = $connection->query($sql); while($row = $query->fetch_assoc()): ?>
 					<?php
 					$rangking = number_format((float) $row["rangking"], 8, '.', '');
-					$q = $connection->query("SELECT nuptk FROM hasil WHERE nuptk='$row[nuptk]' AND id_penilaian='$_GET[kategori_penilaian]' AND tahun='$row[tahun]'");
+					$q = $connection->query("SELECT nuptk FROM hasil WHERE nuptk='$row[nuptk]' AND id_penilaian='$_GET[kategori_penilaian]'");
 					if (!$q->num_rows) {
-					$connection->query("INSERT INTO hasil VALUES(NULL, '$_GET[kategori_penilaian]', '$row[nuptk]', '".$rangking."', '$row[tahun]')");
+					$connection->query("INSERT INTO hasil VALUES(NULL, '$_GET[kategori_penilaian]', '$row[nuptk]', '".$rangking."'");
 					}
 					?>
 					<tr>

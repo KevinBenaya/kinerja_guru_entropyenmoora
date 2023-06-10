@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["save"])) {
 	if ($validasi) {
 		foreach ($_POST["nilai"] as $id_kriteria => $nilai) {
 			$q = $connection->query("SELECT id_nilai FROM nilai WHERE id_penilaian=$_POST[id_penilaian] AND id_kriteria=$id_kriteria AND nuptk=$_POST[nuptk] AND nilai LIKE '%$nilai%'");
-			if ($q->num_rows) {
+			if (!empty($q) && $q->num_rows > 0) {
 				echo alert("Nilai untuk ".$_POST["nuptk"]." sudah ada!", "?page=nilai");
 				$err = true;
 			}
@@ -81,7 +81,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 														<select class="form-control" name="nilai[<?=$r["id_kriteria"]?>]" id="nilai">
 															<option>---</option>
 															<?php $sql = $connection->query("SELECT * FROM penilaian_guru WHERE id_kriteria=$r[id_kriteria]"); while ($data = $sql->fetch_assoc()): ?>
-																<option value="<?=$data["bobot"]?>" class="<?=$data["id_kriteria"]?>"<?= (!$update) ? "" : (($row["kd_penilaian_guru"] != $data["kd_penilaian_guru"]) ? "" : ' selected="selected"') ?>><?=$data["keterangan"]?></option>
+																<option value="<?=$data["bobot"]?>" class="<?=$data["id_kriteria"]?>"<?= (!$update) ? "" : (($row["id_penilaian_guru"] != $data["id_penilaian_guru"]) ? "" : ' selected="selected"') ?>><?=$data["keterangan"]?></option>
 															<?php endwhile; ?>
 														</select>
 				                </div>
@@ -114,7 +114,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	                </thead>
 	                <tbody>
 	                    <?php $no = 1; ?>
-	                    <?php if ($query = $connection->query("SELECT a.id_nilai, c.jenis_penilaian AS jenis_penilaian, b.nama_kriteria AS nama_kriteria, d.nuptk, d.nama_guru AS nama_gur, a.nilai FROM nilai a JOIN kriteria b ON a.id_kriteria=b.id_kriteria JOIN kategori_penilaian c ON a.id_penilaian=c.id_penilaian JOIN guru d ON d.nuptk=a.nuptk")): ?>
+	                    <?php if ($query = $connection->query("SELECT a.id_nilai, c.jenis_penilaian AS jenis_penilaian, b.nama_kriteria AS nama_kriteria, d.nuptk, d.nama_guru AS nama_guru, a.nilai FROM nilai a JOIN kriteria b ON a.id_kriteria=b.id_kriteria JOIN kategori_penilaian c ON a.id_penilaian=c.id_penilaian JOIN guru d ON d.nuptk=a.nuptk")): ?>
 	                        <?php while($row = $query->fetch_assoc()): ?>
 	                        <tr>
 	                            <td><?=$no++?></td>
